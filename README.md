@@ -17,4 +17,4 @@ Hardware project using a Periscope heart stream to power a bubble machine, see [
 
 ## Credits
 
-Project made possible by [peristream](https://github.com/ArnaudRinquin/peristream) and [periscope-participant-colors](https://github.com/vjo/periscope-participant-colors) projects.
+Project powered by [peristream](https://github.com/ArnaudRinquin/peristream) and [periscope-participant-colors](https://github.com/vjo/periscope-participant-colors) projects.
