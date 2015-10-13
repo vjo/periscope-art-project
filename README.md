@@ -5,6 +5,8 @@ Periscope Art Project, generating live visualization of a Periscope stream.
 
 First visualization, using Periscope's hearts to draw a rainbow based on live user generated hearts' color.
 
+![rainbow-screenshot](./rainbow/screenshot.png)
+
 ### Usage
 
 Set a Periscope URL or ID in `rainbow/index.jsx`, line 4.
