@@ -1,4 +1,5 @@
 # periscope-art-project
+
 Periscope Art Project, generating live visualization of a Periscope stream.
 
 ## Rainbow
@@ -9,11 +10,8 @@ First visualization, using Periscope's hearts to draw a rainbow based on live us
 
 ### Usage
 
-Set a Periscope URL or ID in `rainbow/index.jsx`, line 4.
-
 ```bash
-npm install
-npm start
+npm i && start
 ```
 
 ## Bubble machine powered by Periscope hearts
