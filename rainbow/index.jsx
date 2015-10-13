@@ -1,7 +1,7 @@
 var peristream = require('peristream/browser');
 var participantColors = require('periscope-participant-colors');
 
-var stream = peristream('https://www.periscope.tv/w/1rmGPZRWyBMxN');
+var stream = peristream(''); // Set a Periscope URL
 
 var Message = React.createClass({
   render() {
