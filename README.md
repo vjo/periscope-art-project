@@ -11,7 +11,8 @@ First visualization, using Periscope's hearts to draw a rainbow based on live us
 ### Usage
 
 ```bash
-npm i && start
+cd rainbow/
+npm i && npm start
 ```
 
 ## Bubble machine powered by Periscope hearts
