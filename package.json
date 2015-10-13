@@ -5,8 +5,8 @@
   "main": "-",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "babel rainbow/index.jsx -o rainbow/index.js; browserify rainbow/index.js -o rainbow/script.js",
-    "start": "static & open http://127.0.0.1:8080/rainbow"
+    "prestart": "browserify rainbow/index.jsx -t babelify -o rainbow/script.js",
+    "start": "open http://127.0.0.1:8080/rainbow & static"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "node-static": "^0.7.7"
   },
   "dependencies": {
+    "babelify": "^6.3.0",
     "periscope-participant-colors": "^0.1.0",
     "peristream": "^0.1.4",
     "react": "^0.14.0"
