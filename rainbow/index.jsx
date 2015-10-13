@@ -1,47 +1,37 @@
-const peristream = require('peristream/browser');
-const participantColors = require('periscope-participant-colors');
+import peristream from 'peristream/browser';
+import participantColors from 'periscope-participant-colors';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 
-const Message = React.createClass({
-  render() {
-    return <div className='message' style={{backgroundColor: this.props.color.hex}}></div>
-  }
-});
+const Message = ({color}) => <div className='message' style={{backgroundColor: color.hex}}></div>
 
-const MessageList = React.createClass({
-  render() {
-    const messages = this.props.messageList.map(function(message) {
-      return <Message color={message.color} />;
-    });
-    return (
-      <div>
-        {messages}
-      </div>
-    );
-  }
-});
+const MessageList = ({messageList}) => {
+  const messages = messageList.map(({color}, i) => <Message color={color} key={i}/>)
+  return <div>{messages}</div>;
+};
 
-const MessagesContainer = React.createClass({
-  getInitialState() {
-    return {
+class MessagesContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
       messageList: [],
       connected: false,
       connecting: false
     };
-  },
-  componentWillMount() {
-    this.setUrl = this.setUrl.bind(this);
-    this.switchToCurrentUrl = this.switchToCurrentUrl.bind(this);
-  },
-  setUrl(event) {
+  }
+
+  setUrl = (event) => {
     var url = event.target.value;
     this.setState({
       url
     });
-  },
-  switchToCurrentUrl() {
+  }
+
+  switchToCurrentUrl = () => {
     this.disconnect();
     this.connect();
-  },
+  }
+
   disconnect() {
     const { stream } = this.state;
 
@@ -54,7 +44,8 @@ const MessagesContainer = React.createClass({
       stream.disconnect();
     }
 
-  },
+  }
+
   connect() {
 
     const { url } = this.state;
@@ -76,7 +67,7 @@ const MessagesContainer = React.createClass({
         this.addMsg(message);
       }.bind(this));
     }.bind(this));
-  },
+  }
 
   addMsg(message) {
     message.color = participantColors(message.participant_index);
@@ -88,10 +79,11 @@ const MessagesContainer = React.createClass({
       messageList: newMessageList
     });
 
-  },
+  }
+
   render() {
 
-    const { connecting, connected } = this.state;
+    const { connecting, connected, messageList } = this.state;
 
     let link;
 
@@ -105,13 +97,13 @@ const MessagesContainer = React.createClass({
         <input onChange={this.setUrl}></input>
         <button onClick={this.switchToCurrentUrl} disabled={connecting}>Make it shine</button>
         { link }
-        <MessageList messageList={this.state.messageList}/>
+        <MessageList messageList={messageList}/>
       </div>
     );
   }
-});
+}
 
-React.render(
+render(
   <MessagesContainer/>,
-  document.body
+  document.getElementById('app')
 );
