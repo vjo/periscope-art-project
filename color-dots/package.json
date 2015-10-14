@@ -1,0 +1,37 @@
+{
+  "name": "periscope-art-project-color-dots",
+  "version": "0.0.0",
+  "description": "Draw color dots based on users Periscope hearts color, part of Periscope Art Project.",
+  "main": "-",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "browserify index.jsx -t [ babelify --stage 0 ] -o script.js",
+    "start": "open http://127.0.0.1:8080 & static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjo/periscope-art-project.git"
+  },
+  "keywords": [
+    "periscope",
+    "periscopetv",
+    "peristream"
+  ],
+  "author": "Victor Jolissaint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vjo/periscope-art-project/issues"
+  },
+  "homepage": "https://github.com/vjo/periscope-art-project#readme",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "node-static": "^0.7.7"
+  },
+  "dependencies": {
+    "periscope-participant-colors": "^0.1.0",
+    "peristream": "^0.1.6",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  }
+}
