@@ -11,6 +11,15 @@
     .center {
       text-align: center;
     }
+    @keyframes fadein {
+    	0% { opacity: 0; }
+    	30% { opacity: 0.2; }
+    	60% { opacity: 0.4;	}
+    	100% { opacity:1;	}
+    }
+    circle {
+      animation: fadein 0.4s;
+    }
   </style>
   <script src="//cdn.pubnub.com/pubnub-3.7.15.min.js"></script>
 </head>

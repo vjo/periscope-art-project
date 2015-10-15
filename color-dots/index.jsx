@@ -98,7 +98,7 @@ class DotsContainer extends Component {
     const { connecting, connected, messageList } = this.state;
     let link;
     if (!connected && !connecting) {
-      link = <a href="https://twitter.com/hashtag/Periscope?src=hash">Find a periscope.tv url here</a>;
+      link = <a href="//twitter.com/hashtag/Periscope?src=hash">Find a periscope.tv url here</a>;
     }
 
     let dots = messageList.map(function({x, y, r, color}, i) {
