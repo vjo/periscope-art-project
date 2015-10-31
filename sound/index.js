@@ -62,7 +62,11 @@ function playSound({frequency, volume}) {
   var volume = volume || 0.01;
 
   // create web audio api context
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  try {
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  } catch(e) {
+    alert('Web Audio API is not supported in this browser');
+  }
 
   // create Oscillator and gain node
   var oscillator = audioCtx.createOscillator();
