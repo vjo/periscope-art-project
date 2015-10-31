@@ -1,0 +1,34 @@
+{
+  "name": "periscope-art-project-sound",
+  "version": "0.0.0",
+  "description": "Make sounds based on users Periscope hearts, part of Periscope Art Project.",
+  "main": "-",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "browserify index.js -t [ babelify --stage 0 ] -o script.js",
+    "start": "open http://127.0.0.1:8080 & static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjo/periscope-art-project.git"
+  },
+  "keywords": [
+    "periscope",
+    "periscopetv",
+    "peristream"
+  ],
+  "author": "Victor Jolissaint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vjo/periscope-art-project/issues"
+  },
+  "homepage": "https://github.com/vjo/periscope-art-project#readme",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "node-static": "^0.7.7"
+  },
+  "dependencies": {
+    "peristream": "^0.1.6"
+  }
+}
