@@ -18,25 +18,45 @@ const FREQUENCIES = [
   3000
 ];
 const DURATION = 0.4; // duration of the noise in second
+const button = document.getElementById("submit"),
+  url = document.getElementById('input');
+var stream;
 
-var stream = peristream("https://www.periscope.tv/w/1lPKqNVNlBEGb");
+button.addEventListener('click', function() {
+  if (typeof url.value !== 'string') {
+    throw new Error('given url is undefined')
+  }
 
-stream.connect().then(function(emitter){
-  emitter.on(peristream.HEARTS, function(message){
-    let frequency = getFrequency(message.participant_index);
-    makeSound({frequency});
-  });
+  disconnect();
+  connect(url.value);
 });
 
-var getFrequency = function getFrequency(index){
+function disconnect(url) {
+  if (stream) {
+    stream.disconnect();
+  }
+}
+
+function connect(url) {
+  stream = peristream(url);
+
+  stream.connect().then(function(emitter) {
+    emitter.on(peristream.HEARTS, function(message) {
+      let frequency = getFrequency(message.participant_index);
+      makeSound({frequency});
+    });
+  });
+}
+
+function getFrequency(index) {
   if (typeof index !== 'number' || index < 0) {
     throw new Error('given index must be positive number');
   }
 
   return FREQUENCIES[(index - 1) % FREQUENCIES.length];
-};
+}
 
-function makeSound({frequency, volume}){
+function makeSound({frequency, volume}) {
   var volume = volume || 0.01;
 
   // create web audio api context
