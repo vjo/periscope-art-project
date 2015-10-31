@@ -1,7 +1,8 @@
 'use strict';
 import peristream from 'peristream/browser';
 
-// Random list of frequency
+// Random list of 13 frequencies, the logic behind this number this that there
+// is different hearts colors on Periscope, so let's make 13 different sounds
 const FREQUENCIES = [
   50,
   100,
@@ -20,6 +21,7 @@ const FREQUENCIES = [
 const DURATION = 0.4; // duration of the noise in second
 const button = document.getElementById("submit"),
   url = document.getElementById('input');
+
 var stream;
 
 button.addEventListener('click', function() {
@@ -43,7 +45,7 @@ function connect(url) {
   stream.connect().then(function(emitter) {
     emitter.on(peristream.HEARTS, function(message) {
       let frequency = getFrequency(message.participant_index);
-      makeSound({frequency});
+      playSound({frequency});
     });
   });
 }
@@ -56,7 +58,7 @@ function getFrequency(index) {
   return FREQUENCIES[(index - 1) % FREQUENCIES.length];
 }
 
-function makeSound({frequency, volume}) {
+function playSound({frequency, volume}) {
   var volume = volume || 0.01;
 
   // create web audio api context
@@ -76,7 +78,8 @@ function makeSound({frequency, volume}) {
   oscillator.detune.value = 100; // value in cents
   oscillator.start(0);
 
+  // set option for the gain
   gainNode.gain.value = volume;
 
-  oscillator.stop(audioCtx.currentTime + DURATION);
+  oscillator.stop(audioCtx.currentTime + DURATION); // stop the sound after DURATION seconds
 }
